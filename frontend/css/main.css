@@ -1,0 +1,270 @@
+/* ==========================================================================
+   Code Quest — Sci-Fi Cyber Design System & Core Stylesheet
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  /* Color Palette - Deep Pitch Black & Cyber Obsidian */
+  --bg-space: #030403;
+  --bg-primary: #070907;
+  --bg-secondary: #0c120d;
+  --bg-tertiary: #131c15;
+  --bg-card: rgba(10, 15, 11, 0.85);
+  --bg-card-hover: rgba(16, 24, 18, 0.92);
+  --bg-glass: rgba(8, 12, 9, 0.8);
+  --bg-glass-border: rgba(0, 255, 136, 0.2);
+
+  /* Primary Cyber Red & Green Accents */
+  --neon-green: #00ff88;
+  --neon-emerald: #10b981;
+  --neon-red: #ff3366;
+  --neon-crimson: #ff1744;
+  --neon-cyan: #00ff88;       /* Primary active accent -> Neon Green */
+  --neon-blue: #00e676;       /* Auxiliary bright green */
+  --neon-violet: #ff3366;     /* Secondary active accent -> Neon Red */
+  --neon-purple: #ef4444;     /* Deep Crimson */
+  --neon-magenta: #ff1744;    /* Vivid Red */
+  --neon-orange: #ff5252;
+  --neon-gold: #ffd700;
+
+  /* Text Colors */
+  --text-primary: #f5fbf7;
+  --text-secondary: #a1b2a6;
+  --text-muted: #647568;
+  --text-cyan: #00ff88;
+  --text-green: #00ff88;
+  --text-red: #ff3366;
+  --text-gold: #ffd700;
+
+  /* Rank Colors */
+  --rank-bronze: #cd7f32;
+  --rank-silver: #c0c0c0;
+  --rank-gold: #ffd700;
+  --rank-platinum: #00ff88;
+  --rank-diamond: #a7f3d0;
+  --rank-master: #ff3366;
+  --rank-grandmaster: #ff1744;
+  --rank-champion: #00ff88;
+
+  /* Typography: Normal, Clean Font Style */
+  --font-display: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-heading: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Hologram & Glow Shadows */
+  --glow-cyan: 0 0 15px rgba(0, 255, 136, 0.5);
+  --glow-cyan-lg: 0 0 30px rgba(0, 255, 136, 0.7);
+  --glow-magenta: 0 0 15px rgba(255, 51, 102, 0.5);
+  --glow-violet: 0 0 15px rgba(255, 23, 68, 0.5);
+  --glow-gold: 0 0 15px rgba(255, 215, 0, 0.45);
+  --glow-emerald: 0 0 15px rgba(0, 255, 136, 0.5);
+  --glow-red: 0 0 15px rgba(255, 51, 102, 0.6);
+  --glow-green: 0 0 15px rgba(0, 255, 136, 0.6);
+
+  /* Layout & Sizing */
+  --navbar-height: 72px;
+  --border-radius-sm: 6px;
+  --border-radius-md: 10px;
+  --border-radius-lg: 16px;
+  --border-radius-xl: 24px;
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Base Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-style: normal;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  font-family: var(--font-body);
+  font-style: normal;
+  background-color: var(--bg-space);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Background Cyber Red, Green, and Black Gradients */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(255, 51, 102, 0.22) 0%, transparent 45%),
+    radial-gradient(circle at 90% 80%, rgba(0, 255, 136, 0.2) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.8) 0%, #030403 100%),
+    linear-gradient(180deg, #020302 0%, #000000 50%, #040805 100%);
+  z-index: -2;
+  pointer-events: none;
+}
+
+#particle-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-tertiary);
+  border-radius: 4px;
+  border: 1px solid var(--bg-glass-border);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-green);
+  box-shadow: var(--glow-green);
+}
+
+/* Normal Clean Typography Helpers */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: normal;
+  color: var(--text-primary);
+}
+
+.font-display { font-family: var(--font-display); font-style: normal; }
+.font-heading { font-family: var(--font-heading); font-style: normal; }
+.font-mono    { font-family: var(--font-mono); }
+
+.text-cyan    { color: var(--neon-green) !important; }
+.text-green   { color: var(--neon-green) !important; }
+.text-red     { color: var(--neon-red) !important; }
+.text-magenta { color: var(--neon-red) !important; }
+.text-gold    { color: var(--neon-gold) !important; }
+.text-emerald { color: var(--neon-emerald) !important; }
+.text-violet  { color: var(--neon-red) !important; }
+.text-muted   { color: var(--text-muted) !important; }
+
+.gradient-text-cyan {
+  background: linear-gradient(135deg, #00ff88 0%, #10b981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-fire {
+  background: linear-gradient(135deg, #ff3366 0%, #ff1744 50%, #00ff88 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-cosmic {
+  background: linear-gradient(135deg, #00ff88 0%, #f5fbf7 50%, #ff3366 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* App Container and Navigation Layout */
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: var(--navbar-height);
+  position: relative;
+  z-index: 1;
+}
+
+.page-view {
+  display: none;
+  width: 100%;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.page-view.active {
+  display: block;
+}
+
+.container {
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.container-fluid {
+  width: 100%;
+  padding: 0 1.5rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.4)); }
+  50% { filter: drop-shadow(0 0 20px rgba(0, 240, 255, 0.8)); }
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(1000%); }
+}
+
+@keyframes radarSweep {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes floatAnim {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+@keyframes shieldHit {
+  0% { box-shadow: 0 0 0 0 rgba(255, 0, 127, 0.8); }
+  50% { box-shadow: 0 0 35px 8px rgba(255, 0, 127, 0.9); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 0, 127, 0); }
+}
+
+/* Accessibility & Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  #particle-canvas {
+    display: none;
+  }
+}

@@ -1,0 +1,59 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: coderoyale-backend
+
+  # Default: H2 in-memory database for instant dev startup (no MySQL required)
+  datasource:
+    url: ${DB_URL:jdbc:h2:mem:coderoyale;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MySQL}
+    username: ${DB_USER:sa}
+    password: ${DB_PASSWORD:}
+    driver-class-name: ${DB_DRIVER:org.h2.Driver}
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+
+  flyway:
+    enabled: ${FLYWAY_ENABLED:false}
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+
+# Security & JWT Configuration
+coderoyale:
+  jwt:
+    secret: ${JWT_SECRET:CodeRoyaleUltraSecureQuantumSecretKeyForJwt2026EsportsBattleArena}
+    expiration-ms: ${JWT_EXPIRATION_MS:86400000}
+
+  # Isolated Code Execution Service (Judge0)
+  execution:
+    judge0-url: ${JUDGE0_API_URL:}
+    judge0-key: ${JUDGE0_API_KEY:}
+    timeout-ms: 3000
+    memory-limit-kb: 128000
+
+  # AI Coding Coach (CYBER-SAGE LLM Integration)
+  ai:
+    api-url: ${AI_API_URL:}
+    api-key: ${AI_API_KEY:}
+    model: ${AI_MODEL:gpt-4o-mini}
+    rate-limit-per-min: 15
+
+logging:
+  level:
+    root: INFO
+    com.coderoyale: DEBUG
+    org.springframework.security: INFO

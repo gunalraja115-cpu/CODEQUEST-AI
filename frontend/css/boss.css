@@ -1,0 +1,178 @@
+/* ==========================================================================
+   CodeRoyale — Boss Battle Arena Stylesheet
+   ========================================================================== */
+
+.boss-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.boss-card {
+  background: var(--bg-card);
+  border: 1px solid var(--bg-glass-border);
+  border-radius: var(--border-radius-lg);
+  padding: 1.75rem;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.boss-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--neon-cyan), var(--neon-magenta));
+}
+
+.boss-card.bug-hunter::before { background: linear-gradient(90deg, #ff007f, #ff3366); }
+.boss-card.loop-titan::before { background: linear-gradient(90deg, #ffd700, #ff6b00); }
+.boss-card.array-beast::before { background: linear-gradient(90deg, #00f0ff, #0066ff); }
+.boss-card.logic-phantom::before { background: linear-gradient(90deg, #8a2be2, #a855f7); }
+.boss-card.algorithm-overlord::before { background: linear-gradient(90deg, #ff007f, #ffd700, #00f0ff); }
+
+.boss-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 0, 127, 0.4);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 20px rgba(255, 0, 127, 0.2);
+}
+
+.boss-header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.boss-avatar-wrapper {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  border-radius: var(--border-radius-md);
+  border: 2px solid var(--neon-magenta);
+  background: #0a0e1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
+  animation: floatAnim 4s ease-in-out infinite;
+}
+
+.boss-details .boss-name {
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.boss-details .boss-title {
+  font-size: 0.8rem;
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  color: var(--neon-cyan);
+}
+
+.boss-description {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+}
+
+/* Boss Health Bar */
+.boss-hp-section {
+  margin-bottom: 1.25rem;
+}
+
+.boss-hp-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 0.35rem;
+}
+
+.boss-hp-bar {
+  height: 16px;
+  background: rgba(16, 22, 42, 0.9);
+  border: 1px solid rgba(255, 0, 127, 0.3);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.boss-hp-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff3366, #ff007f);
+  box-shadow: 0 0 12px rgba(255, 0, 127, 0.7);
+  transition: width 0.5s ease;
+}
+
+/* Boss Stages & Rewards */
+.boss-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.boss-rewards {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+}
+
+.reward-item {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--neon-gold);
+}
+
+/* Boss Raid Battle View */
+.boss-raid-view {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.boss-raid-header {
+  background: var(--bg-card);
+  border: 1px solid var(--neon-magenta);
+  border-radius: var(--border-radius-lg);
+  padding: 1.5rem 2rem;
+  box-shadow: 0 0 30px rgba(255, 0, 127, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.boss-raid-avatar {
+  font-size: 4rem;
+  animation: glowPulse 2s infinite;
+}
+
+.boss-quote-box {
+  background: rgba(10, 14, 26, 0.8);
+  border-left: 3px solid var(--neon-magenta);
+  padding: 0.6rem 1rem;
+  font-style: italic;
+  font-size: 0.85rem;
+  color: #fca5a5;
+  margin-top: 0.5rem;
+}

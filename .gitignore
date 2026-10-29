@@ -1,0 +1,25 @@
+# Ignore secrets
+.env
+*.env.local
+
+# Java/Maven
+backend/target/
+backend/.mvn/wrapper/maven-wrapper.jar
+*.class
+*.jar
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.code-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Node (if ever added)
+node_modules/

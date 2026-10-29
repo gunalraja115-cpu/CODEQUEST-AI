@@ -1,0 +1,157 @@
+/* ==========================================================================
+   CodeRoyale — Global Leaderboard & Esports Rankings Stylesheet
+   ========================================================================== */
+
+.leaderboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Podium for Top 3 Gladiators */
+.podium-section {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 1.5rem 0 2.5rem;
+  padding: 0 1rem;
+}
+
+.podium-card {
+  background: var(--bg-card);
+  border: 1px solid var(--bg-glass-border);
+  border-radius: var(--border-radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  transition: transform var(--transition-normal);
+  width: 260px;
+}
+
+.podium-card:hover {
+  transform: translateY(-8px);
+}
+
+.podium-card.first {
+  order: 2;
+  height: 320px;
+  border-color: var(--neon-gold);
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.35);
+  background: linear-gradient(180deg, rgba(30, 25, 10, 0.9) 0%, rgba(16, 22, 42, 0.95) 100%);
+}
+
+.podium-card.second {
+  order: 1;
+  height: 280px;
+  border-color: #c0c0c0;
+  box-shadow: 0 0 20px rgba(192, 192, 192, 0.25);
+}
+
+.podium-card.third {
+  order: 3;
+  height: 260px;
+  border-color: #cd7f32;
+  box-shadow: 0 0 20px rgba(205, 127, 50, 0.25);
+}
+
+.podium-crown {
+  font-size: 2.2rem;
+  position: absolute;
+  top: -24px;
+  animation: floatAnim 3s infinite;
+}
+
+.podium-rank-tag {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 900;
+  margin-top: 0.5rem;
+}
+
+.podium-card.first .podium-rank-tag { color: var(--neon-gold); }
+.podium-card.second .podium-rank-tag { color: #e2e8f0; }
+.podium-card.third .podium-rank-tag { color: #f97316; }
+
+/* Filter Bar */
+.leaderboard-filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-card);
+  border: 1px solid var(--bg-glass-border);
+  border-radius: var(--border-radius-md);
+  padding: 0.75rem 1.25rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.leaderboard-tabs {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.filter-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Leaderboard Table */
+.leaderboard-table-card {
+  background: var(--bg-card);
+  border: 1px solid var(--bg-glass-border);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.cyber-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-body);
+  text-align: left;
+}
+
+.cyber-table th {
+  background: rgba(10, 14, 26, 0.85);
+  padding: 1rem 1.25rem;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+}
+
+.cyber-table td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+  font-size: 0.95rem;
+}
+
+.cyber-table tr:hover td {
+  background: rgba(0, 240, 255, 0.04);
+}
+
+.player-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.table-rank-num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  width: 32px;
+}

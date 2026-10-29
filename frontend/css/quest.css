@@ -1,0 +1,191 @@
+/* ==========================================================================
+   CodeRoyale — Galactic Quest Map & Skill Tree Stylesheet
+   ========================================================================== */
+
+.quest-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.quest-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-card);
+  border: 1px solid var(--bg-glass-border);
+  border-radius: var(--border-radius-lg);
+  padding: 1.25rem 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.quest-stats-group {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.quest-stat-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+}
+
+.quest-stat-value {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--neon-cyan);
+}
+
+/* Scrollable/Interactive Star Map */
+.quest-tree-board {
+  position: relative;
+  min-height: 580px;
+  background: radial-gradient(circle at 50% 50%, rgba(138, 43, 226, 0.08) 0%, rgba(10, 14, 26, 0.95) 100%);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  border-radius: var(--border-radius-xl);
+  overflow-x: auto;
+  padding: 3rem 2rem;
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.8);
+}
+
+.quest-tree-path {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 1100px;
+  position: relative;
+  padding: 2rem 0;
+}
+
+/* Connecting Glowing Circuit Track */
+.quest-tree-track {
+  position: absolute;
+  top: 50%;
+  left: 40px;
+  right: 40px;
+  height: 4px;
+  background: rgba(148, 163, 184, 0.2);
+  z-index: 1;
+  transform: translateY(-50%);
+}
+
+.quest-tree-track-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--neon-emerald), var(--neon-cyan));
+  box-shadow: 0 0 12px var(--neon-cyan);
+  transition: width 0.8s ease;
+}
+
+/* Quest Tree Nodes */
+.quest-node {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: transform var(--transition-normal);
+}
+
+.quest-node:hover {
+  transform: translateY(-6px) scale(1.08);
+}
+
+.quest-node-orb {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #0d1424;
+  border: 2px solid rgba(148, 163, 184, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: var(--text-muted);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  transition: all var(--transition-normal);
+}
+
+.quest-node.completed .quest-node-orb {
+  background: linear-gradient(135deg, rgba(0, 245, 155, 0.25), rgba(16, 185, 129, 0.4));
+  border-color: var(--neon-emerald);
+  color: #fff;
+  box-shadow: 0 0 20px rgba(0, 245, 155, 0.6);
+}
+
+.quest-node.current .quest-node-orb {
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.3), rgba(0, 102, 255, 0.4));
+  border-color: var(--neon-cyan);
+  color: #fff;
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.8);
+  animation: glowPulse 2s infinite;
+}
+
+.quest-node.boss-gate .quest-node-orb {
+  border-color: var(--neon-magenta);
+  width: 68px;
+  height: 68px;
+  font-size: 1.8rem;
+  box-shadow: 0 0 25px rgba(255, 0, 127, 0.6);
+}
+
+.quest-node.locked {
+  filter: grayscale(0.85);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.quest-node-title {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.quest-node-stars {
+  display: flex;
+  gap: 0.2rem;
+  font-size: 0.75rem;
+  color: var(--neon-gold);
+}
+
+/* Daily Quests Grid */
+.daily-quests-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+.daily-quest-card {
+  background: var(--bg-card);
+  border: 1px solid var(--bg-glass-border);
+  border-radius: var(--border-radius-md);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.daily-quest-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.daily-quest-reward {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--neon-gold);
+  font-size: 0.85rem;
+}

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Code Quest — The premier full-stack competitive coding battle arena. Clash in 1v1 ranked coding battles, raid multi-stage AI bosses, explore the galactic quest tree, and ascend the global esports leaderboard.">
+  <meta name="keywords" content="coding game, competitive programming, esports, 1v1 coding battle, LeetCode multiplayer, Java, Python, C++, boss battle, algorithms, data structures">
+  <meta name="theme-color" content="#030403">
+  
+  <!-- OpenGraph Metadata -->
+  <meta property="og:title" content="Code Quest — AI Coding Battle Arena">
+  <meta property="og:description" content="Battle with code. Defeat bosses, climb 1v1 ranked ladders, and master algorithms in a rich sci-fi esports gaming experience.">
+  <meta property="og:type" content="website">
+
+  <title>Code Quest — AI Coding Battle Arena | Competitive Esports Platform</title>
+
+  <!-- Google Fonts: Clean Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/arena.css">
+  <link rel="stylesheet" href="css/boss.css">
+  <link rel="stylesheet" href="css/quest.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/leaderboard.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="css/auth.css">
+
+  <style>
+    /* Top Navbar Styles */
+    #main-navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--navbar-height);
+      background: rgba(3, 4, 3, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.8), 0 1px 0 rgba(255, 51, 102, 0.2);
+      z-index: 999;
+    }
+    
+    .nav-link {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-style: normal;
+      text-transform: none;
+      letter-spacing: normal;
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 0.5rem 0.85rem;
+      border-radius: var(--border-radius-sm);
+      transition: all var(--transition-fast);
+      position: relative;
+    }
+    
+    .nav-link:hover {
+      color: var(--neon-green);
+      background: rgba(0, 255, 136, 0.08);
+    }
+    
+    .nav-link.active {
+      color: var(--neon-green);
+      background: rgba(0, 255, 136, 0.15);
+      border-bottom: 2px solid var(--neon-green);
+    }
+
+    @media (max-width: 860px) {
+      .nav-links-desktop {
+        display: none !important;
+      }
+    }
+  </style>
+
+  <!-- Monaco Editor RequireJS Loader -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs/loader.js" async></script>
+  <!-- SockJS and STOMP for Real-time Multiplayer -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+</head>
+<body>
+  <!-- Dynamic Particle Canvas -->
+  <canvas id="particle-canvas"></canvas>
+
+  <div id="app">
+    <!-- Main Top Esports Navbar -->
+    <header id="main-navbar"></header>
+
+    <!-- Main Content Container for All 16 Page Views -->
+    <main class="main-content">
+      <!-- 1. Landing Page -->
+      <section id="landing-page" class="page-view active"></section>
+
+      <!-- 2. Authentication (Login / Register / Recover) -->
+      <section id="auth-page" class="page-view"></section>
+
+      <!-- 3. Player Onboarding -->
+      <section id="onboarding-page" class="page-view"></section>
+
+      <!-- 4. Gaming Dashboard -->
+      <section id="dashboard-page" class="page-view"></section>
+
+      <!-- 5. Game Mode Selection -->
+      <section id="modes-page" class="page-view"></section>
+
+      <!-- 6. Matchmaking & Waiting Lobby -->
+      <section id="matchmaking-page" class="page-view"></section>
+
+      <!-- 7. Friend Rooms & Custom Arenas -->
+      <section id="rooms-page" class="page-view"></section>
+
+      <!-- 8. Coding Battle Arena (Monaco Editor & Real-time Combat) -->
+      <section id="arena-page" class="page-view"></section>
+
+      <!-- 9. Boss Battle Challenges -->
+      <section id="boss-page" class="page-view"></section>
+
+      <!-- 10. Quest Map & Skill Evolution Tree -->
+      <section id="quest-page" class="page-view"></section>
+
+      <!-- 11. AI Coding Coach (CYBER-SAGE) -->
+      <section id="aicoach-page" class="page-view"></section>
+
+      <!-- 12. Global & Friends Leaderboards -->
+      <section id="leaderboard-page" class="page-view"></section>
+
+      <!-- 13. Match Results & Rewards -->
+      <section id="results-page" class="page-view"></section>
+
+      <!-- 14. Player Profile & Badges -->
+      <section id="profile-page" class="page-view"></section>
+
+      <!-- 15. Notifications & Settings -->
+      <section id="settings-page" class="page-view"></section>
+
+      <!-- 16. Admin Management Console -->
+      <section id="admin-page" class="page-view"></section>
+    </main>
+
+    <!-- Global Floating Toast Notification Container -->
+    <div id="toast-container"></div>
+  </div>
+
+  <!-- Main ES6 Application Bootstrap -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

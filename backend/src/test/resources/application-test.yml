@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:coderoyale_test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MySQL
+    username: sa
+    password: ""
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+  flyway:
+    enabled: false
+
+coderoyale:
+  jwt:
+    secret: TestSecretKeyForJwtUnitTestsCodeRoyaleArena2026
+    expiration-ms: 3600000
+  execution:
+    judge0-url: ""
+    judge0-key: ""
+  ai:
+    api-url: ""
+    api-key: ""

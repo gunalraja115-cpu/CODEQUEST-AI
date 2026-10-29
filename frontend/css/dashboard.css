@@ -1,0 +1,171 @@
+/* ==========================================================================
+   CodeRoyale — Dashboard & Combat Profile Stylesheet
+   ========================================================================== */
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 992px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Player Identity Hero Card */
+.player-hero-card {
+  background: var(--bg-card);
+  border: 1px solid var(--bg-glass-border);
+  border-radius: var(--border-radius-lg);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.player-hero-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(180deg, rgba(0, 240, 255, 0.15) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.rank-emblem-display {
+  width: 110px;
+  height: 110px;
+  margin: 1rem 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem;
+  filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.4));
+  animation: floatAnim 4s ease-in-out infinite;
+}
+
+.player-callsign {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.08em;
+}
+
+.player-title {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: var(--neon-cyan);
+  margin-bottom: 1.25rem;
+}
+
+/* Combat Stats Matrix */
+.combat-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  width: 100%;
+  margin: 1.25rem 0;
+}
+
+.combat-stat-box {
+  background: rgba(10, 14, 26, 0.7);
+  border: 1px solid rgba(0, 240, 255, 0.12);
+  border-radius: var(--border-radius-sm);
+  padding: 0.75rem;
+  text-align: center;
+}
+
+.combat-stat-val {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.combat-stat-lbl {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+/* Quick Match CTA Banner */
+.quick-play-banner {
+  background: linear-gradient(135deg, rgba(16, 22, 42, 0.9) 0%, rgba(30, 20, 60, 0.85) 100%);
+  border: 1px solid var(--neon-magenta);
+  border-radius: var(--border-radius-lg);
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 0, 127, 0.15);
+}
+
+.quick-play-info h2 {
+  font-size: 1.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.quick-play-info p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+/* Recent Matches Table */
+.recent-matches-card {
+  background: var(--bg-card);
+  border: 1px solid var(--bg-glass-border);
+  border-radius: var(--border-radius-lg);
+  padding: 1.5rem;
+}
+
+.match-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+
+.match-history-row {
+  display: grid;
+  grid-template-columns: 48px 1fr 140px 100px 100px;
+  align-items: center;
+  background: rgba(10, 14, 26, 0.65);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  border-left: 4px solid var(--neon-cyan);
+  border-radius: var(--border-radius-sm);
+  padding: 0.75rem 1rem;
+  transition: all var(--transition-fast);
+}
+
+.match-history-row:hover {
+  background: rgba(16, 22, 42, 0.9);
+  border-color: rgba(0, 240, 255, 0.3);
+}
+
+.match-history-row.victory {
+  border-left-color: var(--neon-emerald);
+}
+
+.match-history-row.defeat {
+  border-left-color: var(--neon-red);
+}
+
+.match-result-badge {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.match-history-row.victory .match-result-badge { color: var(--neon-emerald); }
+.match-history-row.defeat .match-result-badge { color: var(--neon-red); }
